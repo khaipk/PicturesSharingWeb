@@ -9,6 +9,6 @@
 <body>
 <p>This is homepage</p>
 <a href="pictures/cute.jpg">Lovely Girls</a>
-<a href="login.jsp">Watch more girls</a>
+<a href="/PicturesSharing/check-session">Watch more girls</a>
 </body>
 </html>

@@ -7,6 +7,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import database.CheckMethod;
 
@@ -19,7 +20,10 @@ public class CheckLogin extends HttpServlet{
 		String username = req.getParameter("username")  ;
 		String password = req.getParameter("password")  ;
 		if(check.checkLogin(username, password)) {
-			resp.sendRedirect("/PicturesSharing/picture.jsp");
+			HttpSession session = req.getSession();
+			session.setAttribute("name", username);
+			session.setMaxInactiveInterval(20);
+			resp.sendRedirect("/PicturesSharing/check-session");
 		} else {
 			resp.sendRedirect("/PicturesSharing/login.jsp");
 		}
